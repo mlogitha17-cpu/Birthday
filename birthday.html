@@ -1,0 +1,545 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday, My Sister! 💗</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe4ef, #f6dfff, #fff0f6);
+    color: #7d2451;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    position: relative;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    color: #e62983;
+    font-size: clamp(38px, 8vw, 72px);
+    margin: 20px 0;
+    animation: glow 2s infinite alternate;
+}
+
+.hero p {
+    max-width: 650px;
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 15px;
+}
+
+.heart {
+    font-size: 65px;
+    animation: beat 1s infinite;
+}
+
+button {
+    background: #f04494;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    margin: 10px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #c2185b;
+    transform: scale(1.05);
+}
+
+section {
+    padding: 65px 20px;
+}
+
+h2 {
+    color: #d6297a;
+    font-family: Georgia, serif;
+    font-size: clamp(28px, 5vw, 42px);
+    margin-bottom: 20px;
+}
+
+.description {
+    max-width: 650px;
+    margin: 15px auto;
+    line-height: 1.8;
+}
+
+.card {
+    max-width: 750px;
+    margin: 25px auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 25px;
+    box-shadow: 0 8px 25px #e8aac8;
+    line-height: 2;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 950px;
+    margin: 30px auto;
+}
+
+.photo-card {
+    background: white;
+    padding: 12px;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px #e8aac8;
+    transition: 0.3s;
+}
+
+.photo-card:hover {
+    transform: translateY(-7px) rotate(-1deg);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.photo-card p {
+    margin: 12px;
+    font-weight: bold;
+}
+
+#surprise {
+    display: none;
+    max-width: 700px;
+    margin: 25px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 8px 25px #e8aac8;
+    font-size: 20px;
+    line-height: 1.9;
+}
+
+#surprise.show {
+    display: block;
+    animation: appear 0.7s ease;
+}
+
+.music-box {
+    max-width: 600px;
+    padding: 25px;
+    background: white;
+    margin: 25px auto;
+    border-radius: 25px;
+    box-shadow: 0 8px 25px #e8aac8;
+}
+
+audio {
+    width: 100%;
+    margin-top: 15px;
+}
+
+footer {
+    padding: 30px 15px;
+    background: #ffbfd9;
+    line-height: 2;
+}
+
+.floating {
+    position: fixed;
+    bottom: -50px;
+    z-index: 10;
+    pointer-events: none;
+    animation: floatUp 5s linear forwards;
+}
+
+@keyframes beat {
+    50% { transform: scale(1.2); }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px #ffb4d3; }
+    to { text-shadow: 0 0 25px #ff69b4; }
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===============================
+     SECTION 1: BIRTHDAY HOME PAGE
+================================ -->
+
+<div class="hero">
+
+    <div class="heart">💗🎂💗</div>
+
+    <p>✨ A Special Day for a Special Person ✨</p>
+
+    <h1>
+        Happy Birthday<br>
+        <span id="sisterHeading">SISTER NAME</span>!
+    </h1>
+
+    <p>
+        To my sweetest sister, my forever friend,
+        my partner in crime and my biggest blessing.
+        You make my world more beautiful! 💕
+    </p>
+
+    <button onclick="goToLetter()">
+        Open Your Birthday Letter 💌
+    </button>
+
+    <button onclick="celebrate()">
+        Let's Celebrate 🎉
+    </button>
+
+</div>
+
+
+<!-- ===============================
+     SECTION 2: PHOTO GALLERY
+================================ -->
+
+<section id="memories">
+
+    <h2>Unnodaa alagana pictures 📸</h2>
+
+    <p class="description">
+        Every picture tells a story, and every memory
+        with you is a treasure in my heart. 💖
+    </p>
+
+    <div class="gallery">
+
+        <div class="photo-card">
+            <img src="./sister1.jpeg" alt="Our first memory">
+            <p> bestest friend 💗</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="./sister2.jpeg" alt="Our special memory">
+            <p>permanent headache 🎀</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="./sister3.jpeg" alt="Our happy memory">
+            <p>Forever person 🫶</p>
+        </div>
+
+        <div class="photo-card">
+            <img src="./sister4.jpeg" alt="Our beautiful memory">
+            <p>Alagiiii 🌸</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===============================
+     SECTION 3: BIRTHDAY SONG
+================================ -->
+
+<section id="music">
+
+    <h2>Your Birthday Song 🎵</h2>
+
+    <div class="music-box">
+
+        <h3 id="songTitle">Our Special Song 💕</h3>
+
+        <p class="description">
+            A little music to make your birthday
+            even more special. 🎶
+        </p>
+
+        <audio id="birthdaySong" controls>
+            <source src="./song.birthday.mpeg" type="audio/mpeg">
+            Your browser does not support audio.
+        </audio>
+
+        <p>
+            🎧 Press play to listen to your favourite song!
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ===============================
+     SECTION 4: BIRTHDAY LETTER
+================================ -->
+
+<section id="letter" class="letter">
+
+    <h2>En chella akka-ku 💌</h2>
+
+    <div class="card">
+
+        <p>Dear Akka <strong id="letterName">SISTER NAME</strong>, 💗</p>
+
+        <p>
+            Happy Birthday to the most wonderful sister
+            En life la enaku kidaicha best gift nee dhaan maadu. unn kooda sanda podrathu,tease
+            pandrathu,sirikuradhu ellamey nammaloda special memories thaan.
+        </p>
+
+        <p>
+            Sila neram sanda potalum,evlo thooram irundhalum,un mela iruka paasam matum 
+            pogathu,nee enaku akka matum ila,nalla oru best friendum dhaan.
+        </p>
+
+        <p>
+            un dreams ellamey true aaganum.unaku ethachum help nalaum kelu un thangachi naa 
+            eppavumey unkoda irupen.
+        </p>
+
+        <p>
+            seri knjm comedy..okey ena apdinaa photo ku matum 
+            thaan pakka innocent...un original character enaku matum
+            thaan theriyum(loosu,mendalu....).
+            
+
+        </p>
+
+        <p>
+            Never stop smiling. Never stop dreaming.
+            Always remember how much you are loved. 🥹
+        </p>
+
+        <p>
+            You are not just my sister;
+            you are a forever blessing in my life.
+        </p>
+
+        <p>
+            Love you more than words can say! 💖
+        </p>
+
+        <p>
+            With lots of love,<br>
+            <strong id="senderName">YOUR NAME</strong> 💕
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ===============================
+     SECTION 5: SURPRISE MESSAGE
+================================ -->
+
+<section>
+
+    <h2>One Last Surprise 🎁</h2>
+
+    <p class="description">
+        I have one more little message just for you!
+    </p>
+
+    <button onclick="showSurprise()">
+        Tap to Open Your Gift 🎀
+    </button>
+
+    <div id="surprise">
+
+        🌷 Happy Birthday, besttttt sister!!!🌷
+
+        <br><br>
+
+        loveeeee youuuu moreeeeeee.
+        narrrrrrrrr...i want you as my sister inn every lifetime.
+        And na ipdilam website create panuvenu ni ninachuruka mata
+        etho enala mudincha oru little thing...I hope this will make you 
+        happyyyyyy.
+
+        <br><br>
+
+        Ena nadanthalum seri,epdi aanalum seri 
+        you will always have a special place in my heart!!!!
+
+        <br><br>
+
+        love youuu moreee..!eppavum intha mariii enmelaa paasamaveyyy iruu....
+        ni irupenu theriyum but soldre...seri avlothan enoda gift uh
+        last year marii 22 gifts kudukamudilaa gunduuuuu.
+
+        <br><br>
+
+        Forever and always, my favourite human. 💗
+
+        <br><br>
+
+        🎂 HAPPY BIRTHDAY! 🎂
+
+    </div>
+
+</section>
+
+
+<!-- ===============================
+     SECTION 6: FOOTER
+================================ -->
+
+<footer>
+
+    Made with endless love 💗
+
+    <br>
+
+    Especially for <strong id="footerName">SISTER NAME</strong>
+
+    <br>
+
+    From <strong id="footerSender">YOUR NAME</strong>
+
+    <br>
+
+    Forever your loving sibling ♡
+
+</footer>
+
+
+<script>
+
+/* =====================================
+   PERSONAL DETAILS
+   CHANGE THESE VALUES ONLY
+===================================== */
+
+const sisterName = "Narmathaa";
+const yourName = "by un thangachi";
+const songName = "Our Special Song";
+
+
+/* =====================================
+   UPDATE WEBSITE NAMES
+===================================== */
+
+document.title = "Happy Birthday " + sisterName + "! 💗";
+
+document.getElementById("sisterHeading").textContent = sisterName;
+document.getElementById("letterName").textContent = sisterName;
+document.getElementById("footerName").textContent = sisterName;
+
+document.getElementById("senderName").textContent = yourName;
+document.getElementById("footerSender").textContent = yourName;
+
+document.getElementById("songTitle").textContent = songName;
+
+
+/* =====================================
+   BIRTHDAY LETTER BUTTON
+===================================== */
+
+function goToLetter() {
+    document.getElementById("letter").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+/* =====================================
+   SURPRISE MESSAGE
+===================================== */
+
+function showSurprise() {
+
+    const surprise = document.getElementById("surprise");
+
+    surprise.classList.add("show");
+
+    surprise.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    celebrate();
+}
+
+
+/* =====================================
+   FLOATING HEARTS AND CONFETTI
+===================================== */
+
+function celebrate() {
+
+    const decorations = ["💗", "💕", "✨", "🎉", "🌸", "💖"];
+
+    for (let i = 0; i < 40; i++) {
+
+        const item = document.createElement("span");
+
+        item.className = "floating";
+
+        item.textContent =
+            decorations[Math.floor(Math.random() * decorations.length)];
+
+        item.style.left = Math.random() * 100 + "vw";
+
+        item.style.fontSize =
+            (18 + Math.random() * 24) + "px";
+
+        item.style.animationDuration =
+            (3 + Math.random() * 4) + "s";
+
+        document.body.appendChild(item);
+
+        setTimeout(() => {
+            item.remove();
+        }, 7500);
+    }
+}
+
+</script>
+
+</body>
+</html>
